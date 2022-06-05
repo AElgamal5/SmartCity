@@ -82,12 +82,6 @@
                             value="{{ old('hid') }}"
                             class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white">
                     </div>
-                    <div class="u-form-group u-form-partition-factor-2 u-form-group-8">
-                        <label for="text-68c0" class="u-label">State: </label>
-                        <input type="number" placeholder="Enter Citizen's Home ID" id="text-68c0" name="hid"
-                            value="{{ old('status') }}"
-                            class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white">
-                    </div>
                     <div class="u-align-center u-form-group u-form-submit">
                         {{-- <a href="#" class="u-border-none u-btn u-btn-submit u-button-style u-custom-color-1 u-btn-1">ADD
                             Citizen<br>
