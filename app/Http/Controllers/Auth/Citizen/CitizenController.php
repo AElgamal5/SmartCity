@@ -15,7 +15,6 @@ use App\Models\Appointment;
 use App\Support\Collection;
 use Carbon\Carbon;
 use Kyslik\ColumnSortable\Sortable;
-use Illuminate\Support\Facades\Log;
 
 class CitizenController extends Controller
 {
@@ -180,7 +179,6 @@ class CitizenController extends Controller
         //dd($home);
         $facilities =  $this->facilities();
         //dd($facilities);
-        Log::info("the message for log");
         return view('auth.citizen.apartment', [
             'home' => $home, 'facilities' => $facilities
         ]);
