@@ -1,0 +1,352 @@
+.u-section-1 {
+  background-image: url("../images/Graphics-10.jpg");
+  background-position: 50% 50%;
+}
+
+.u-section-1 .u-sheet-1 {
+  min-height: 730px;
+}
+
+@media (max-width: 767px) {
+  .u-section-1 .u-sheet-1 {
+    min-height: 713px;
+  }
+}
+
+@media (max-width: 575px) {
+  .u-section-1 .u-sheet-1 {
+    min-height: 600px;
+  }
+} .u-section-2 {
+  background-image: linear-gradient(0deg, rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url("../images/3branchesofgovernment.jpg");
+}
+
+.u-section-2 .u-sheet-1 {
+  min-height: 657px;
+}
+
+.u-section-2 .u-text-1 {
+  font-size: 3rem;
+  margin: 174px auto 0;
+}
+
+.u-section-2 .u-text-2 {
+  font-size: 1.875rem;
+  margin: 61px auto 0;
+}
+
+.u-section-2 .u-btn-1 {
+  border-style: none;
+  text-transform: uppercase;
+  font-size: 1.125rem;
+  letter-spacing: 1px;
+  background-image: none;
+  font-weight: 700;
+  margin: 55px auto 60px;
+  padding: 28px 53px 28px 51px;
+}
+
+@media (max-width: 991px) {
+  .u-section-2 .u-text-1 {
+    margin-left: 103px;
+  }
+
+  .u-section-2 .u-text-2 {
+    margin-left: 243px;
+  }
+
+  .u-section-2 .u-btn-1 {
+    margin-left: 38px;
+  }
+}
+
+@media (max-width: 767px) {
+  .u-section-2 .u-sheet-1 {
+    min-height: 538px;
+  }
+
+  .u-section-2 .u-text-1 {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .u-section-2 .u-text-2 {
+    margin-left: auto;
+  }
+
+  .u-section-2 .u-btn-1 {
+    margin-left: auto;
+  }
+}
+
+@media (max-width: 575px) {
+  .u-section-2 .u-sheet-1 {
+    min-height: 344px;
+  }
+
+  .u-section-2 .u-text-1 {
+    font-size: 1.5rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .u-section-2 .u-text-2 {
+    font-size: 1.5rem;
+  }
+} .u-section-3 {
+  background-image: linear-gradient(0deg, rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url("../images/cd7568042e47719ac38c24b044881d322052b7cf77500fa40cfee97f0721b0461fd48a5f493f8d95e5a6d22c9e0131dbd5750a3489917f20ea07c2_1280.jpg");
+  background-position: 50% 50%;
+}
+
+.u-section-3 .u-sheet-1 {
+  min-height: 676px;
+}
+
+.u-section-3 .u-text-1 {
+  font-weight: 400;
+  letter-spacing: normal;
+  text-transform: none;
+  margin: 102px auto 0;
+}
+
+.u-section-3 .u-text-2 {
+  width: 774px;
+  margin: 15px auto 0;
+}
+
+.u-section-3 .u-list-1 {
+  grid-template-rows: auto;
+  margin: 49px auto 0 0;
+}
+
+.u-section-3 .u-repeater-1 {
+  grid-template-columns: calc(16.6667% - 25.8333px) calc(16.6667% - 25.8333px) calc(16.6667% - 25.8333px) calc(16.6667% - 25.8333px) calc(16.6667% - 25.8333px) calc(16.6667% - 25.8333px);
+  min-height: 217px;
+  grid-gap: 31px 31px;
+}
+
+.u-section-3 .u-container-layout-1 {
+  padding: 30px;
+}
+
+.u-section-3 .u-icon-1 {
+  height: 59px;
+  width: 59px;
+  background-image: none;
+  margin: 0 auto;
+}
+
+.u-section-3 .u-text-3 {
+  margin: 20px auto 0;
+}
+
+.u-section-3 .u-container-layout-2 {
+  padding: 30px;
+}
+
+.u-section-3 .u-icon-2 {
+  height: 59px;
+  width: 59px;
+  background-image: none;
+  margin: 0 auto;
+}
+
+.u-section-3 .u-text-4 {
+  margin: 20px auto 0;
+}
+
+.u-section-3 .u-container-layout-3 {
+  padding: 30px;
+}
+
+.u-section-3 .u-icon-3 {
+  height: 59px;
+  width: 59px;
+  background-image: none;
+  margin: 0 auto;
+}
+
+.u-section-3 .u-text-5 {
+  margin: 20px auto 0;
+}
+
+.u-section-3 .u-container-layout-4 {
+  padding: 30px;
+}
+
+.u-section-3 .u-icon-4 {
+  height: 59px;
+  width: 59px;
+  background-image: none;
+  margin: 0 auto;
+}
+
+.u-section-3 .u-text-6 {
+  margin: 20px auto 0;
+}
+
+.u-section-3 .u-container-layout-5 {
+  padding: 30px;
+}
+
+.u-section-3 .u-icon-5 {
+  height: 59px;
+  width: 59px;
+  background-image: none;
+  margin: 0 auto;
+}
+
+.u-section-3 .u-text-7 {
+  margin: 20px auto 0;
+}
+
+.u-section-3 .u-container-layout-6 {
+  padding: 30px;
+}
+
+.u-section-3 .u-icon-6 {
+  height: 59px;
+  width: 59px;
+  background-image: none;
+  margin: 0 auto;
+}
+
+.u-section-3 .u-text-8 {
+  margin: 20px auto 0;
+}
+
+.u-section-3 .u-btn-1 {
+  border-style: none;
+  text-transform: uppercase;
+  font-size: 1.125rem;
+  letter-spacing: 1px;
+  background-image: none;
+  font-weight: 700;
+  margin: 40px auto 60px;
+  padding: 28px 53px 28px 51px;
+}
+
+@media (max-width: 1199px) {
+  .u-section-3 .u-sheet-1 {
+    min-height: 595px;
+  }
+
+  .u-section-3 .u-list-1 {
+    height: auto;
+    margin-right: initial;
+    margin-left: initial;
+  }
+
+  .u-section-3 .u-repeater-1 {
+    min-height: 179px;
+  }
+
+  .u-section-3 .u-btn-1 {
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+}
+
+@media (max-width: 991px) {
+  .u-section-3 .u-sheet-1 {
+    min-height: 932px;
+  }
+
+  .u-section-3 .u-text-2 {
+    width: 720px;
+  }
+
+  .u-section-3 .u-repeater-1 {
+    grid-template-columns: calc(33.3333% - 20.6666px) calc(33.3333% - 20.6666px) calc(33.3333% - 20.6666px);
+    min-height: 548px;
+  }
+}
+
+@media (max-width: 767px) {
+  .u-section-3 .u-sheet-1 {
+    min-height: 868px;
+  }
+
+  .u-section-3 .u-text-2 {
+    width: 540px;
+  }
+
+  .u-section-3 .u-repeater-1 {
+    grid-template-columns: calc(50% - 15.5px) calc(50% - 15.5px);
+    min-height: 925px;
+  }
+
+  .u-section-3 .u-container-layout-1 {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .u-section-3 .u-container-layout-2 {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .u-section-3 .u-container-layout-3 {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .u-section-3 .u-container-layout-4 {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .u-section-3 .u-container-layout-5 {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .u-section-3 .u-container-layout-6 {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+@media (max-width: 575px) {
+  .u-section-3 .u-sheet-1 {
+    min-height: 1018px;
+  }
+
+  .u-section-3 .u-text-2 {
+    width: 340px;
+  }
+
+  .u-section-3 .u-repeater-1 {
+    grid-template-columns: 100%;
+  }
+
+  .u-section-3 .u-container-layout-1 {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  .u-section-3 .u-container-layout-2 {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  .u-section-3 .u-container-layout-3 {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  .u-section-3 .u-container-layout-4 {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  .u-section-3 .u-container-layout-5 {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  .u-section-3 .u-container-layout-6 {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}

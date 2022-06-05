@@ -1,0 +1,155 @@
+.u-section-1 .u-sheet-1 {
+  min-height: 290px;
+}
+
+.u-section-1 .u-text-1 {
+  font-size: 1.875rem;
+  margin: 17px auto 0 0;
+}
+
+.u-section-1 .u-table-1 {
+  width: 784px;
+  margin: 48px auto 0 0;
+}
+
+.u-block-8a6e-54 {
+  border-style: double;
+}
+
+.u-section-1 .u-table-entity-1 {
+  min-height: 100px;
+}
+
+.u-section-1 .u-table-header-1 {
+  background-image: none;
+}
+
+.u-section-1 .u-table-body-1 {
+  background-image: none;
+}
+
+.u-section-1 .u-table-cell-4 {
+  border-style: double;
+}
+
+.u-section-1 .u-table-cell-5 {
+  border-style: double;
+}
+
+.u-section-1 .u-table-cell-6 {
+  border-style: double;
+}
+
+.u-section-1 .u-form-1 {
+  height: 139px;
+  margin: -80px 36px 6px 801px;
+}
+
+.u-section-1 .u-form-group-1 {
+  margin-left: 0;
+}
+
+.u-section-1 .u-btn-1 {
+  background-image: none;
+  border-style: none;
+  font-weight: 700;
+}
+
+@media (max-width: 1199px) {
+  .u-section-1 .u-form-1 {
+    margin-top: 20px;
+    margin-right: 0;
+    margin-left: 638px;
+  }
+}
+
+@media (max-width: 991px) {
+  .u-section-1 .u-table-1 {
+    width: 720px;
+  }
+
+  .u-section-1 .u-form-1 {
+    margin-left: 418px;
+  }
+}
+
+@media (max-width: 767px) {
+  .u-section-1 .u-table-1 {
+    width: 540px;
+  }
+
+  .u-section-1 .u-form-1 {
+    margin-left: 238px;
+  }
+}
+
+@media (max-width: 575px) {
+  .u-section-1 .u-sheet-1 {
+    min-height: 398px;
+  }
+
+  .u-section-1 .u-table-1 {
+    width: 340px;
+    margin-top: 17px;
+    margin-left: -18px;
+  }
+
+  .u-section-1 .u-form-1 {
+    margin-top: 43px;
+    margin-left: 38px;
+  }
+}.u-section-2 .u-sheet-1 {
+  min-height: 310px;
+}
+
+.u-section-2 .u-text-1 {
+  margin-bottom: 0;
+  margin-top: 20px;
+}
+
+.u-section-2 .u-table-1 {
+  width: 784px;
+  margin: 34px auto 60px 0;
+}
+
+.u-block-863d-8 {
+  border-style: double;
+}
+
+.u-section-2 .u-table-header-1 {
+  background-image: none;
+}
+
+.u-section-2 .u-table-body-1 {
+  background-image: none;
+}
+
+.u-section-2 .u-table-cell-4 {
+  border-style: double;
+}
+
+.u-section-2 .u-table-cell-5 {
+  border-style: double;
+}
+
+.u-section-2 .u-table-cell-6 {
+  border-style: double;
+}
+
+@media (max-width: 991px) {
+  .u-section-2 .u-table-1 {
+    width: 720px;
+  }
+}
+
+@media (max-width: 767px) {
+  .u-section-2 .u-table-1 {
+    width: 540px;
+  }
+}
+
+@media (max-width: 575px) {
+  .u-section-2 .u-table-1 {
+    width: 340px;
+  }
+}
