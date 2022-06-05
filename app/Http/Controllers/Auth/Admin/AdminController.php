@@ -44,7 +44,12 @@ class AdminController extends Controller
         //$id = Auth('employee')->user()->citizen_id;
         $admin = DB::select('select * from citizens where id=?', [Auth('admin')->user()->citizen_id]);
         //dd($emp);
-        return view('auth.admin.profile', ['admin' => $admin]);
+        $home = DB::select('SELECT Homes.home_id , Homes.bid , Homes.floor_no ,Roads.rname
+        FROM citizens inner join Homes on citizens.hid = Homes.home_id
+        inner join Buildings on homes.bid = Buildings.building_id
+        inner join lands on lands.land_id=Buildings.lid
+        inner join Roads on Roads.road_id=lands.rid where citizens.id = ?', [Auth::guard('admin')->user()->citizen_id]);
+        return view('auth.admin.profile', ['admin' => $admin], ['home' => $home]);
     }
 
     public function showChangePassword()
@@ -69,18 +74,18 @@ class AdminController extends Controller
         return redirect()->back()->with("success", "Password successfully changed!");
     }
 
-    
+
     public function employees()
     {
         $emps = Employee::sortable()->paginate(10, ['*'], 'employees');
         return view('auth.admin.emp.panel', ['emps' => $emps]);
     }
-    
+
     public function addEmployee()
     {
         return view('auth.admin.emp.add');
     }
-    
+
     public function addEmployeeSave(Request $request)
     {
         $this->validate($request, [
@@ -122,7 +127,7 @@ class AdminController extends Controller
 
     public function statistics()
     {
-        $all = DB::select('SELECT count(id) as cn from citizens'); 
+        $all = DB::select('SELECT count(id) as cn from citizens');
         $fem = DB::select('SELECT count(id) as cf from citizens where Sex=0');
         $male = DB::select('SELECT count(id) as cm from citizens where Sex=1');
         $teen = DB::select('SELECT count(id) as ct from citizens where ((((DATEDIFF(DAY, ( BDate ), GetDate()) / 365.25))) >= 16 and ((((DATEDIFF(DAY, ( BDate  ), GetDate()) / 365.25))) <=21))');
@@ -139,7 +144,7 @@ class AdminController extends Controller
         $mostwanted = DB::select('SELECT count(jid) as an , jtype FROM jobs WHERE NOT EXISTS(SELECT * FROM  asjobs WHERE jobs.jid = asjobs.jid) group by jtype order by an desc');
         $bankacc = DB::select('SELECT count(acc_id) as an,bank_name from bank group by bank_name order by an desc');
         //dd($mostworked);
-        return view('auth.admin.statistics',[
+        return view('auth.admin.statistics', [
             'all' => $all,
             'fem' => $fem,
             'male' => $male,

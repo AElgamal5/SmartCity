@@ -157,12 +157,16 @@ class EmployeeController extends Controller
 
     public function deleteCitizen($id)
     {
-        if ($id != Auth::guard('employee')->user()->citizen_id) {
+        /* if ($id != Auth::guard('employee')->user()->citizen_id) {
             DB::delete('delete from citizens where id = ?', [$id]);
             return redirect()->back()->withSuccess('You have deleted citizen successfuly');
         } else {
             return redirect()->back()->withErrors('You can\'t delete your citizen account');
-        }
+        } */
+        $citizen = Citizen::find($id);
+        $citizen->status = 0;
+        $citizen->save();
+        return redirect()->back()->withSuccess('You have deleted citizen successfuly');
     }
 
     public function editCitizen($id)
@@ -184,7 +188,8 @@ class EmployeeController extends Controller
             'sex' => 'required|integer|in:0,1',
             'sstatus' => 'required|integer|in:0,1',
             'hid' => 'required|integer|exists:Homes,home_id|min:1|max:2147483647',
-            'phone' => 'required|integer|gte:1000000000|lte:2147483647'
+            'phone' => 'required|integer|gte:1000000000|lte:2147483647',
+            'status' => 'required|integer|in:0,1'
         ]);
         /* dd($request); */
         $citizen = Citizen::find($id);
@@ -200,6 +205,7 @@ class EmployeeController extends Controller
         $citizen->sstatus = $request->sstatus;
         $citizen->hid = $request->hid;
         $citizen->phone = $request->phone;
+        $citizen->status = $request->status;
         $citizen->save();
         // DB::update('update citizens 
         // set email=?, fname= ?, minit=?, lname=?, bdate=?, sex=?, sstatus=?, 
