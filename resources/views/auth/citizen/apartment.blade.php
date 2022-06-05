@@ -215,7 +215,7 @@
         </div>
 
     </section>
-    
+
     <script>
         const fundingSources = [
             paypal.FUNDING.PAYPAL
@@ -384,5 +384,4 @@
             }
         }
     </script>
-
 @endsection

@@ -52,7 +52,7 @@ Route::post('/citizen/changePhoto', [CitizenController::class, 'changePhoto'])->
 
 
 Route::get('/citizen/apartment', [CitizenController::class, 'apartment'])->name('citizen.apartment');
-Route::get('/citizen/apartment/payment', [CitizenController::class, 'payment'])->name('citizen.apartment.payment');
+/* Route::get('/citizen/apartment/payment', [CitizenController::class, 'payment'])->name('citizen.apartment.payment');*/
 
 Route::get('/citizen/bank', [CitizenController::class, 'bank'])->name('citizen.bank');
 Route::post('/citizen/bank', [CitizenController::class, 'bank'])->name('citizen.bank.trans');
