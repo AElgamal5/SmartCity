@@ -163,6 +163,11 @@ class EmployeeController extends Controller
         } else {
             return redirect()->back()->withErrors('You can\'t delete your citizen account');
         } */
+        $emp = DB::select('SELECT citizen_id from employee where citizen_id = ?', [$id]);
+        /* dd($emp); */
+        if (!empty($emp)) {
+            return redirect()->back()->withErrors('You can\'t delete your This account');
+        }
         $citizen = Citizen::find($id);
         $citizen->status = 0;
         $citizen->save();
@@ -170,7 +175,12 @@ class EmployeeController extends Controller
     }
 
     public function editCitizen($id)
-    {
+    {   
+        $emp = DB::select('SELECT citizen_id from employee where citizen_id = ?', [$id]);
+        /* dd($emp); */
+        if (!empty($emp)) {
+            return redirect()->back()->withErrors('You can\'t delete your This account');
+        }
         $citizen = DB::select('select * from citizens where id=?', [$id]);
         return view('auth.employee.citizen&care.editCitizen', ['citizen' => $citizen]);
     }

@@ -32,6 +32,9 @@
             </p>
             <p class="u-text u-text-default u-text-13"><b>You Can Control all Your Light System Remotely</b>
             </p>
+
+            
+
             <div class="u-table u-table-responsive u-table-1">
                 <table class="u-table-entity">
                     <colgroup>
@@ -61,10 +64,9 @@
             </div>
             <a href="Payment.html" data-page-id="645016483"
                 class="u-black u-border-none u-btn u-btn-round u-button-style u-radius-28 u-btn-1">ON</a>
-            <a href="Payment.html" data-page-id="645016483"
-                class="u-black u-border-none u-btn u-btn-round u-button-style u-radius-28 u-btn-2">OFF</a><span
-                class="u-file-icon u-icon u-icon-4"><img
-                    src="{{ asset('images/opened-door-aperture-png-icon-101378.png') }}" alt=""></span>
+
+                <span class="u-file-icon u-icon u-icon-4">
+                <img src="{{ asset('images/opened-door-aperture-png-icon-101378.png') }}" alt=""></span>
             <p class="u-text u-text-default u-text-14"><b>Control Doors</b>
             </p>
             <p class="u-text u-text-default u-text-15"><b> You Can Control your Doors Remotely</b>
