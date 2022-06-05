@@ -35,6 +35,7 @@
         <link rel="stylesheet" href="{{ asset('css/changePassword.css') }}" media="screen">
     @elseif (request()->route()->getName() == 'citizen.apartment')
         <link rel="stylesheet" href="{{ asset('css/apartment.css') }}" media="screen">
+        <script src="https://www.paypal.com/sdk/js?client-id=AYi0n4jdft4YnHq1Qu-KTZsh6F66csqFcWW2ZX95K6lqGH-3pSYa9_SPn57X20zMa9_HZITyefiw6NuI&currency=USD&intent=capture&enable-funding=venmo"></script>
     @elseif (request()->route()->getName() == 'citizen.apartment.payment')
         <link rel="stylesheet" href="{{ asset('css/payment.css') }}" media="screen">
     @elseif (request()->route()->getName() == 'citizen.bank' ||
