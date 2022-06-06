@@ -186,21 +186,42 @@
                             <td class="u-border-3 u-border-grey-30 u-table-cell u-table-cell-4">Electric</td>
                             <td class="u-border-3 u-border-grey-30 u-table-cell u-table-cell-5">Paid</td>
                             <td class="u-border-3 u-border-grey-30 u-table-cell u-table-cell-6">
-                                <div id="paypal-button-container"></div>
+                                {{-- <div id="paypal-button-container"></div> --}}
+                                <form action="{{ url('/citizen/apartment/charge') }}" method="post">
+                                    {{ csrf_field() }}
+                                    <input type="text" name="type" value="elec" style="display: none">
+                                    <input type="submit" name="submit" value="Pay Now"
+                                        class="u-black u-border-none u-btn u-btn-round u-btn-submit u-button-style u-radius-21"
+                                        style="margin-left: 110px">
+                                </form>
                             </td>
                         </tr>
                         <tr style="height: 75px;">
                             <td class="u-border-3 u-border-grey-30 u-table-cell u-table-cell-7">Gas</td>
                             <td class="u-border-3 u-border-grey-30 u-table-cell u-table-cell-8">NotPaid</td>
                             <td class="u-border-3 u-border-grey-30 u-table-cell u-table-cell-9">
-                                <div id="paypal-button-container1"></div>
+                                {{-- <div id="paypal-button-container1"></div> --}}
+                                <form action="{{ url('/citizen/apartment/charge') }}" method="post">
+                                    {{ csrf_field() }}
+                                    <input type="text" name="type" value="gas" style="display: none">
+                                    <input type="submit" name="submit" value="Pay Now"
+                                        class="u-black u-border-none u-btn u-btn-round u-btn-submit u-button-style u-radius-21"
+                                        style="margin-left: 110px">
+                                </form>
                             </td>
                         </tr>
                         <tr style="height: 75px;">
                             <td class="u-border-3 u-border-grey-30 u-table-cell u-table-cell-10">Water</td>
                             <td class="u-border-3 u-border-grey-30 u-table-cell u-table-cell-11">Paid</td>
                             <td class="u-border-3 u-border-grey-30 u-table-cell u-table-cell-12">
-                                <div id="paypal-button-container2"></div>
+                                {{-- <div id="paypal-button-container2"></div> --}}
+                                <form action="{{ url('/citizen/apartment/charge') }}" method="post">
+                                    {{ csrf_field() }}
+                                    <input type="text" name="type" value="elec" style="display: none">
+                                    <input type="submit" name="submit" value="Pay Now"
+                                        class="u-black u-border-none u-btn u-btn-round u-btn-submit u-button-style u-radius-21"
+                                        style="margin-left: 110px">
+                                </form>
                             </td>
                         </tr>
                     </tbody>
@@ -215,8 +236,8 @@
         </div>
 
     </section>
-
-    <script>
+    {{-- men al qalb --}}
+    {{-- <script>
         const fundingSources = [
             paypal.FUNDING.PAYPAL
         ]
@@ -383,5 +404,5 @@
                 console.log('The funding source is ineligible')
             }
         }
-    </script>
+    </script> --}}
 @endsection

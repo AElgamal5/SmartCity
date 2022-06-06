@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PaymentController;
 
 use App\Http\Controllers\Auth\Citizen\CitizenLoginController;
 use App\Http\Controllers\Auth\Citizen\CitizenController;
@@ -53,6 +54,10 @@ Route::post('/citizen/changePhoto', [CitizenController::class, 'changePhoto'])->
 
 Route::get('/citizen/apartment', [CitizenController::class, 'apartment'])->name('citizen.apartment');
 /* Route::get('/citizen/apartment/payment', [CitizenController::class, 'payment'])->name('citizen.apartment.payment');*/
+/* Route::get('/citizen/apartment/payment', [PaymentController::class, 'index']); */
+Route::post('/citizen/apartment/charge', [PaymentController::class, 'charge']);
+Route::get('/citizen/apartment/success', [PaymentController::class, 'success']);
+Route::get('/citizen/apartment/error', [PaymentController::class, 'error']);
 
 Route::get('/citizen/bank', [CitizenController::class, 'bank'])->name('citizen.bank');
 Route::post('/citizen/bank', [CitizenController::class, 'bank'])->name('citizen.bank.trans');

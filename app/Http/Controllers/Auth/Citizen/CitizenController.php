@@ -139,7 +139,7 @@ class CitizenController extends Controller
             inner join homes on citizens.hid = homes.home_id
             inner join gas on Homes.home_id = gas.hid
             inner join gas_his on gas.reader_id = gas_his.reader_id
-            where citizens.id = 2 )  as result order by gh desc', [Auth::guard('citizen')->user()->id]);
+            where citizens.id = ? )  as result order by gh desc', [Auth::guard('citizen')->user()->id]);
         //dd($gas);
         $gas_amount = ($gas[0]->gc - $gas[0]->gl) * $costPerkilo  + ($tax / 100) * (($gas[0]->gl - $gas[0]->gc) * $costPerkilo);
         //dd($gas_amount);
