@@ -19,6 +19,6 @@ class Home extends Model
         'bid', 'area', 'floor_no', 'rooms_no', 'home_rent'
     ];
     protected $sortable = [
-        'home_id', 'bid', 'area', 'floor_no', 'rooms_no', 'home_rent', 'created_at', 'updated_at'
+        'home_id', 'bid', 'area', 'floor_no', 'rooms_no', 'home_rent', 'created_at', 'updated_at', 'status'
     ];
 }

@@ -38,7 +38,7 @@ class CitizenController extends Controller
         /* SELECT c2.cssn, c2.ctype, c2.ssn FROM Care as c1
         INNER JOIN Care as c2 ON c1.cssn = c2.cssn and c1.ssn = 10*/
         $cares = DB::select('SELECT fname from citizens inner join Care on ? = care.id
-        where citizens.id = care.cid', [Auth::guard('citizen')->user()->id]);
+        where citizens.id = care.cid and citizens.status = 1', [Auth::guard('citizen')->user()->id]);
         //dd($cares);
         return view('auth.citizen.citizenPanel', ['cares' => $cares]);
     }
@@ -64,6 +64,10 @@ class CitizenController extends Controller
         if ($emp[0]->cid == 1) {
             $emp = 1;
         } else {
+            $emp = DB::select('select count(citizen_id) as cid from admin where citizen_id = ?', [Auth::guard('citizen')->user()->id]);
+            if ($emp[0]->cid == 1) {
+                $emp = 1;
+            }
             $emp = 0;
         }
         return view('auth.citizen.dashboard', ['home' => $home, 'job' => $job, 'emp' => $emp]);
@@ -141,7 +145,7 @@ class CitizenController extends Controller
             inner join gas_his on gas.reader_id = gas_his.reader_id
             where citizens.id = ? )  as result order by gh desc', [Auth::guard('citizen')->user()->id]);
         //dd($gas);
-        $gas_amount = ($gas[0]->gc - $gas[0]->gl) * $costPerkilo  + ($tax / 100) * (($gas[0]->gl - $gas[0]->gc) * $costPerkilo);
+        $gas_amount = ($gas[0]->gc - $gas[0]->gl) * $costPerkilo  + ($tax / 100) * (($gas[0]->gc - $gas[0]->gl) * $costPerkilo);
         //dd($gas_amount);
         $elec = DB::select('select top 1 * from (
             select homes.home_id,elec_his.last_read as el, elec_his.current_read as ec , elec_his.created_at as eh
@@ -151,7 +155,7 @@ class CitizenController extends Controller
             inner join elec_his on elec.reader_id = elec_his.reader_id
             where citizens.id = ? ) as result order by eh desc', [Auth::guard('citizen')->user()->id]);
         //dd($elec);
-        $elec_amount = ($elec[0]->ec - $elec[0]->el) * $costPerkilo  + ($tax / 100) * (($elec[0]->el - $elec[0]->ec) * $costPerkilo);
+        $elec_amount = ($elec[0]->ec - $elec[0]->el) * $costPerkilo  + ($tax / 100) * (($elec[0]->ec - $elec[0]->el) * $costPerkilo);
         //dd($elec_amount);
         $water = DB::select('select top 1 * from (
             select homes.home_id, water_his.last_read as wl, water_his.current_read as wc , water_his.created_at as wh
@@ -165,7 +169,8 @@ class CitizenController extends Controller
         //dd($water_amount);
         return [
             'gas' => $gas, 'gas_amount' => $gas_amount,
-            'elec' => $elec, 'elec_amount' => $elec_amount, 'water' => $water, 'water_amount' => $water_amount
+            'elec' => $elec, 'elec_amount' => $elec_amount, 'water' => $water, 'water_amount' => $water_amount,
+            'tax' => $tax, 'costPerkilo' => $costPerkilo
         ];
     }
 
@@ -177,14 +182,17 @@ class CitizenController extends Controller
             inner join lands on lands.land_id=Buildings.lid
             inner join Roads on Roads.road_id=lands.rid where citizens.id = ?', [Auth::guard('citizen')->user()->id]);
         //dd($home);
-        $facilities =  $this->facilities();
-        //dd($facilities);
-        return view('auth.citizen.apartment', [
-            'home' => $home, 'facilities' => $facilities
-        ]);
+        if (!empty($home)) {
+            $facilities =  $this->facilities();
+            //dd($facilities);
+            return view('auth.citizen.apartment', [
+                'home' => $home, 'facilities' => $facilities
+            ]);
+        }
+        return view('auth.citizen.apartment', ['home' => $home]);
     }
 
-    public function payment()
+    /* public function payment()
     {
         $other_serveies = 15;
         $facilities =  $this->facilities();
@@ -194,7 +202,7 @@ class CitizenController extends Controller
             'gas_amount' => $facilities['gas_amount'], 'elec_amount' => $facilities['elec_amount'], 'water_amount' => $facilities['water_amount'],
             'other_serveies' => $other_serveies, 'total' => $total, 'accounts' => $accounts
         ]);
-    }
+    } */
 
     public function bank(Request $request)
     {
@@ -290,14 +298,21 @@ class CitizenController extends Controller
         return redirect()->back()->with('success', 'Request sent successfully');
     }
 
-    public function certficateOfBirth()
+    public function certficateOfBirth(Request $request)
     {
+        if ($request->cid == 0) {
+            return redirect()->route('citizen.login')->with('warning', 'You Have to Login First.');
+        }
+        $this->validate($request, [
+            'cid'   => 'required|integer|exists:citizens,id',
+        ]);
         $father = DB::select('SELECT citizens.id, fname, minit, lname from citizens inner join Care on ?=care.cid
-        where citizens.id = care.id and ctype = ?', [Auth::guard('citizen')->user()->id, 'father']);
+        where citizens.id = care.id and ctype = ?', [$request->cid, 'father']);
         $mother = DB::select('SELECT citizens.id, fname, minit, lname from citizens inner join Care on ?=care.cid
-        where citizens.id = care.id and ctype = ?', [Auth::guard('citizen')->user()->id, 'mother']);
+        where citizens.id = care.id and ctype = ?', [$request->cid, 'mother']);
+        $citizen = DB::select('SELECT * from citizens where id = ?', [$request->cid]);
         //dd($mother);
-        return view('auth.citizen.eGov.certficateOfBirth', ['father' => $father, 'mother' => $mother]);
+        return view('auth.citizen.eGov.certficateOfBirth', ['father' => $father, 'mother' => $mother, 'citizen' => $citizen]);
     }
 
     public function idCard()

@@ -14,7 +14,7 @@
                 <table class="u-table-entity">
                     <thead class="u-grey-80 u-table-header u-table-header-1">
                         <tr style="height: 69px;">
-                            <th class="u-border-1 u-border-grey-dark-1 u-table-cell">@sortablelink('pid', 'No.')</th>
+                            <th class="u-border-1 u-border-grey-dark-1 u-table-cell">@sortablelink('id', 'No.')</th>
                             <th class="u-border-1 u-border-grey-dark-1 u-table-cell">@sortablelink('pname', 'Name')</th>
                             <th class="u-border-1 u-border-grey-dark-1 u-table-cell">@sortablelink('state', 'State')</th>
                             <th class="u-border-1 u-border-grey-dark-1 u-table-cell">@sortablelink('hid', 'Home No.')</th>
@@ -28,7 +28,7 @@
 
                         @foreach ($iots as $iot)
                             <tr style="height: 59px;">
-                                <td class="u-border-3 u-border-grey-30 u-table-cell u-table-cell-7">{{ $iot->pid }}
+                                <td class="u-border-3 u-border-grey-30 u-table-cell u-table-cell-7">{{ $iot->id }}
                                 </td>
                                 <td class="u-border-3 u-border-grey-30 u-table-cell u-table-cell-7"> {{ $iot->pname }}
                                 </td>
@@ -48,7 +48,7 @@
                                 <td class="u-border-3 u-border-grey-30 u-table-cell u-table-cell-7">
                                     {{ $iot->updated_at }}</td>
                                 <td class="u-border-3 u-border-grey-30 u-table-cell u-table-cell-12">
-                                    <a href="{{ route('employee.editIot', $iot->pid) }}">Edit</a>/<a href="{{ Route('employee.deleteIot', $iot->pid) }}">Delete</a>
+                                    <a href="{{ route('employee.editIot', $iot->id) }}">Edit</a>/<a href="{{ Route('employee.deleteIot', $iot->id) }}">Delete</a>
                                 </td>
                             </tr>
                         @endforeach

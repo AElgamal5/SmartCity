@@ -28,6 +28,21 @@
                         <input type="text" placeholder="Enter Building no." id="address-28a4" name="ap_id" value="{{ $ajob[0]->ap_id }}"
                             class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="">
                     </div> --}}
+                    <div class="u-form-group u-form-select u-form-group-7">
+                        <label for="select-b7c6" class="u-label">State: </label>
+                        <div class="u-form-select-wrapper">
+                            <select id="select-b7c6" name="status"
+                                class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white">
+                                <option value="">Select</option>
+                                <option value="0" {{ $ajob[0]->status == '0' ? 'selected' : '' }}>Idle</option>
+                                <option value="1" {{ $ajob[0]->status == '1' ? 'selected' : '' }}>Active</option>
+                            </select>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="12" version="1"
+                                class="u-caret">
+                                <path fill="currentColor" d="M4 8L0 4h8z"></path>
+                            </svg>
+                        </div>
+                    </div>
                     <div class="u-align-center u-form-group u-form-submit">
                         {{-- <a href="#" class="u-border-none u-btn u-btn-submit u-button-style u-custom-color-1 u-btn-1">ADD
                             Citizen<br>

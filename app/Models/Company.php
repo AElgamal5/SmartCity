@@ -16,9 +16,9 @@ class Company extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'cname', 'field', 'Capital', 'Bid',
+        'cname', 'field', 'Capital', 'Bid', 'status'
     ];
     protected $sortable = [
-        'company_id', 'cname', 'field', 'Capital', 'Bid', 'created_at', 'updated_at'
+        'company_id', 'cname', 'field', 'Capital', 'Bid', 'created_at', 'updated_at', 'status'
     ];
 }

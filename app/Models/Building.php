@@ -19,6 +19,6 @@ class Building extends Model
         'no_flats', 'no_floors', 'lid', 'sb_type', 'area'
     ];
     protected $sortable = [
-        'building_id', 'no_flats', 'no_floors', 'lid', 'sb_type', 'area', 'created_at', 'updated_at'
+        'building_id', 'no_flats', 'no_floors', 'lid', 'sb_type', 'area', 'created_at', 'updated_at','status'
     ];
 }

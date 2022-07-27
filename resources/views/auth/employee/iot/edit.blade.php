@@ -9,7 +9,7 @@
             <h3 class="u-text u-text-default u-text-1"><b><u>Edit IOT</u></b>
             </h3>
             <div class="u-expanded-width-xs u-form u-form-1">
-                <form action="{{ Route('employee.editIot.save', $iot[0]->pid) }}" method="POST"
+                <form action="{{ Route('employee.editIot.save', $iot[0]->id) }}" method="POST"
                     class="u-clearfix u-form-spacing-2 u-inner-form" style="padding: 8px;">
                     @csrf
                     @method('PUT')

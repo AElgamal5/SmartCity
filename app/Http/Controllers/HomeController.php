@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\ForgotPassword;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 
 class HomeController extends Controller
@@ -47,10 +48,19 @@ class HomeController extends Controller
         return redirect()->back()->withSuccess('Check your email we\'ll contact you as soon as possible');
     }
 
-    public function eGovernment(){
-        if(Auth::guard('employee')->check() || Auth::guard('admin')->check()){
+    public function eGovernment()
+    {
+        /* if(Auth::guard('employee')->check() || Auth::guard('admin')->check()){
             return redirect()->back()->with('warning','Logout And login as a citizen');
+        } */
+        if (Auth::guard('citizen')->check()) {
+            $cares = DB::select('SELECT fname,cid from citizens inner join Care on ? = care.id
+            where citizens.id = care.cid and citizens.status = 1', [Auth::guard('citizen')->user()->id]);
+            /* dd($cares); */ 
         }
-        return view('eGovernent');
+        else{
+            $cares=[];
+        }
+        return view('eGovernent', ['cares' => $cares]);
     }
 }

@@ -18,11 +18,13 @@ class Care extends Model
     protected $fillable = [
         'id',
         'cid',
-        'ctype'
+        'ctype',
+        'status',
     ];
     protected $sortable = [
         'id',
         'cid',
-        'ctype'
+        'ctype',
+        'status',
     ];
 }

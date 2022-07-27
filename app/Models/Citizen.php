@@ -10,7 +10,6 @@ use Kyslik\ColumnSortable\Sortable;
 class Citizen extends Authenticatable
 {
     use HasFactory, Sortable;
-
     /**
      * The attributes that are mass assignable.
      *
@@ -19,32 +18,11 @@ class Citizen extends Authenticatable
     protected $table = 'citizens';
     protected $guard = 'citizen';
     protected $fillable = [
-        //'id',
-        'email',
-        'password',
-        'fname',
-        'minit',
-        'lname',
-        'bdate',
-        'sex',
-        'sstatus',
-        'phone',
-        'hid'
+        'email', 'password', 'fname', 'minit', 'lname', 'bdate', 'sex', 'sstatus', 'phone', 'hid', 'status'
     ];
     public $sortable = [
-        'id',
-        'email',
-        'password',
-        'fname',
-        'minit',
-        'lname',
-        'bdate',
-        'sex',
-        'sstatus',
-        'phone',
-        'hid'
+        'id', 'email', 'password', 'fname', 'minit', 'lname', 'bdate', 'sex', 'sstatus', 'phone', 'hid', 'status'
     ];
-
     /**
      * The attributes that should be hidden for serialization.
      *

@@ -24,10 +24,10 @@
                                         <div class="u-border-2 u-border-grey-75 u-container-layout u-container-layout-2">
                                             <h6 class="u-text u-text-default u-text-4"><u>Baby information</u>
                                             </h6>
-                                            <p class="u-text u-text-5"><b>{{ auth('citizen')->user()->fname }}</b></p>
+                                            <p class="u-text u-text-5"><b>{{$citizen[0]->fname }}</b></p>
                                             <p class="u-text u-text-6">Egyptian</p>
                                             <p class="u-text u-text-default u-text-7">
-                                                @if (auth('citizen')->user()->sstatus == '1')
+                                                @if ($citizen[0]->sstatus == '1')
                                                     Maried
                                                 @else
                                                     Single
@@ -36,7 +36,7 @@
                                             <p class="u-text u-text-default u-text-8">Nationality:</p>
                                             <p class="u-text u-text-default u-text-9">Soicial status:</p>
                                             <p class="u-text u-text-default u-text-10">
-                                                @if (auth('citizen')->user()->sex == '1')
+                                                @if ($citizen[0]->sex == '1')
                                                     Male
                                                 @else
                                                     Female
@@ -45,8 +45,8 @@
                                             <p class="u-text u-text-default u-text-11">Gender:</p>
                                             <p class="u-text u-text-default u-text-12">Smart City</p>
                                             <p class="u-text u-text-default u-text-13">Place of birth:</p>
-                                            <p class="u-text u-text-14">{{ auth('citizen')->user()->bdate }}</p>
-                                            <p class="u-text u-text-default u-text-15">{{ auth('citizen')->user()->id }}
+                                            <p class="u-text u-text-14">{{ $citizen[0]->bdate }}</p>
+                                            <p class="u-text u-text-default u-text-15">{{ $citizen[0]->id }}
                                             </p>
                                             <p class="u-text u-text-16">ID:</p>
                                             <p class="u-text u-text-17">Date of Birth</p>
@@ -104,7 +104,7 @@
         </script>
     @else
         <br><br><br>
-        <h2 style="margin-left:23%">Your Birth Data Doesn't Ouccure in Our System</h2>
+        <h2 style="margin-left:23%">Your Birth Data Doesn't Occur in Our System</h2>
         <br><br><br><br><br><br><br><br>
     @endif
 

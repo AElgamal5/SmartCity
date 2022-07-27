@@ -18,10 +18,11 @@
                             <th class="u-border-1 u-border-grey-dark-1 u-table-cell">@sortablelink('salary', 'Salary')</th>
                             <th class="u-border-1 u-border-grey-dark-1 u-table-cell">@sortablelink('jtype', 'Type')</th>
                             <th class="u-border-1 u-border-grey-dark-1 u-table-cell">@sortablelink('work_place_id', 'bulding no.')</th>
-                            <th class="u-border-1 u-border-grey-dark-1 u-table-cell">@sortablelink('confirm', 'State')</th>
+                            <th class="u-border-1 u-border-grey-dark-1 u-table-cell">@sortablelink('confirm', 'Confirm')</th>
+                            <th class="u-border-1 u-border-grey-dark-1 u-table-cell">@sortablelink('status', 'State')</th>
                             <th class="u-border-1 u-border-grey-dark-1 u-table-cell">@sortablelink('created_at', 'Created At')</th>
                             <th class="u-border-1 u-border-grey-dark-1 u-table-cell">@sortablelink('updated_at', 'Updated At')</th>
-                            <th class="u-border-1 u-border-grey-dark-1 u-table-cell">Edit/Delete</th>
+                            <th class="u-border-1 u-border-grey-dark-1 u-table-cell">Edit{{-- /Delete --}}</th>
                         </tr>
                     </thead>
                     <tbody class="u-custom-color-1 u-table-body u-table-body-1">
@@ -42,13 +43,20 @@
                                         Unconfirmed
                                     @endif
                                 </td>
+                                <td class="u-border-3 u-border-grey-30 u-table-cell u-table-cell-7"> 
+                                    @if ($job->status == 1)
+                                        Active
+                                    @else
+                                        Idle
+                                    @endif
+                                </td>
                                 <td class="u-border-3 u-border-grey-30 u-table-cell u-table-cell-7">{{ $job->created_at }}
                                 </td>
                                 <td class="u-border-3 u-border-grey-30 u-table-cell u-table-cell-7">{{ $job->updated_at }}
                                 </td>
                                 <td class="u-border-3 u-border-grey-30 u-table-cell u-table-cell-12">
-                                    <a href="{{ Route('employee.editJob', $job->jid) }}">Edit</a>/<a
-                                        href="{{ Route('employee.deletejob', $job->jid) }}">Delete</a>
+                                    <a href="{{ Route('employee.editJob', $job->jid) }}">Edit</a>{{-- /<a
+                                        href="{{ Route('employee.deletejob', $job->jid) }}">Delete</a> --}}
                                 </td>
                             </tr>
                         @endforeach
@@ -74,9 +82,10 @@
                             <th class="u-border-1 u-border-grey-dark-1 u-table-cell">@sortablelink('citizen_id', 'Citizen SSN')</th>
                             <th class="u-border-1 u-border-grey-dark-1 u-table-cell">@sortablelink('jid', 'Job ID')</th>
                             {{-- <th class="u-border-1 u-border-grey-dark-1 u-table-cell">@sortablelink('ap_id', 'Building ID')</th> --}}
+                            <th class="u-border-1 u-border-grey-dark-1 u-table-cell">@sortablelink('status', 'State')</th>
                             <th class="u-border-1 u-border-grey-dark-1 u-table-cell">@sortablelink('created_at', 'Created At')</th>
                             <th class="u-border-1 u-border-grey-dark-1 u-table-cell">@sortablelink('updated_at', 'Updated At')</th>
-                            <th class="u-border-1 u-border-grey-dark-1 u-table-cell">Edit/Delete</th>
+                            <th class="u-border-1 u-border-grey-dark-1 u-table-cell">Edit{{-- /Delete --}}</th>
                         </tr>
                     </thead>
                     <tbody class="u-custom-color-1 u-table-body u-table-body-1">
@@ -92,12 +101,19 @@
                                 {{-- <td class="u-border-3 u-border-grey-30 u-table-cell u-table-cell-7"> {{ $ajob->ap_id }}
                                 </td> --}}
                                 <td class="u-border-3 u-border-grey-30 u-table-cell u-table-cell-7">
+                                    @if ($ajob->status==1)
+                                        Active
+                                    @else
+                                        Idle
+                                    @endif
+                                </td>
+                                <td class="u-border-3 u-border-grey-30 u-table-cell u-table-cell-7">
                                     {{ $ajob->created_at }}</td>
                                 <td class="u-border-3 u-border-grey-30 u-table-cell u-table-cell-7">
                                     {{ $ajob->updated_at }}</td>
                                 <td class="u-border-3 u-border-grey-30 u-table-cell u-table-cell-12">
-                                    <a href="{{ Route('employee.editAJob', $ajob->id) }}">Edit</a>/<a
-                                        href="{{ Route('employee.deleteAJob', $ajob->id) }}">Delete</a>
+                                    <a href="{{ Route('employee.editAJob', $ajob->id) }}">Edit</a>{{-- /<a
+                                        href="{{ Route('employee.deleteAJob', $ajob->id) }}">Delete</a> --}}
                                 </td>
                             </tr>
                         @endforeach

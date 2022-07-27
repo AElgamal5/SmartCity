@@ -9,7 +9,8 @@
                     src="{{ asset('images/2830284.png') }}" alt=""></span>
             @if (count($accounts))
                 <div class="u-form u-form-1">
-                    <form action="{{ Route('citizen.bank.trans') }}" method="POST" class="u-clearfix u-form-spacing-10 u-inner-form" style="padding: 10px;">
+                    <form action="{{ Route('citizen.bank.trans') }}" method="POST"
+                        class="u-clearfix u-form-spacing-10 u-inner-form" style="padding: 10px;">
                         @csrf
                         <div class="u-form-group u-form-select u-form-group-1">
                             <label for="select-66aa" class="u-label"><b>Accounts</b></label>
@@ -63,11 +64,16 @@
                         <tbody class="u-custom-color-1 u-table-body u-table-body-1">
                             @foreach ($trans as $tran)
                                 <tr style="height: 75px;">
-                                    <td class="u-border-3 u-border-grey-30 u-table-cell u-table-cell-7">{{ $tran->trans_id }}</td>
-                                    <td class="u-border-3 u-border-grey-30 u-table-cell u-table-cell-8">{{ $tran->bank_no }}</td>
-                                    <td class="u-border-3 u-border-grey-30 u-table-cell u-table-cell-9">{{ $tran->amount }}$</td>
-                                    <td class="u-border-3 u-border-grey-30 u-table-cell u-table-cell-10">{{ $tran->sendto }}</td>
-                                    <td class="u-border-3 u-border-grey-30 u-table-cell u-table-cell-11">{{ $tran->created_at }}</td>
+                                    <td class="u-border-3 u-border-grey-30 u-table-cell u-table-cell-7">
+                                        {{ $tran->trans_id }}</td>
+                                    <td class="u-border-3 u-border-grey-30 u-table-cell u-table-cell-8">
+                                        {{ $tran->bank_no }}</td>
+                                    <td class="u-border-3 u-border-grey-30 u-table-cell u-table-cell-9">
+                                        {{ $tran->amount }}$</td>
+                                    <td class="u-border-3 u-border-grey-30 u-table-cell u-table-cell-10">
+                                        {{ $tran->sendto }}</td>
+                                    <td class="u-border-3 u-border-grey-30 u-table-cell u-table-cell-11">
+                                        {{ $tran->created_at }}</td>
                                 </tr>
                             @endforeach
                         </tbody>
@@ -75,7 +81,8 @@
                     {{ $trans->appends(Request::except('transactions'))->links('pagination::bootstrap-5') }}
                 </div>
             @else
-                <br><br>
+                <a href="{{ Route('citizen') }}" data-page-id="92889271" style="margin:4% 10%"
+                    class="u-active-none u-border-2 u-border-custom-color-1 u-bottom-left-radius-0 u-bottom-right-radius-0 u-btn u-btn-rectangle u-button-style u-hover-none u-none u-radius-0 u-text-custom-color-1 u-top-left-radius-0 u-top-right-radius-0 u-btn-1">Back&nbsp;</a>
                 <h2 style="margin-left: 25%">You Don't have A Bank Account</h2>
             @endif
 

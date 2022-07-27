@@ -19,6 +19,6 @@ class AsJob extends Model
         'citizen_id', 'jid',
     ];
     protected $sortable = [
-        'id', 'citizen_id', 'jid', 'created_at', 'updated_at'
+        'id', 'citizen_id', 'jid', 'created_at', 'updated_at','status'
     ];
 }

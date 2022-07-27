@@ -18,8 +18,9 @@
                 </div>
             @endif
             <h6 class="u-align-center u-text u-text-default u-text-palette-1-base u-text-1">
-                {{ auth('citizen')->user()->fname }} {{ auth('citizen')->user()->lname }}</h6><span
-                class="u-file-icon u-icon u-icon-1"><img src="{{ asset('images/108153.png') }}" alt=""></span>
+                {{ auth('citizen')->user()->fname }} {{ auth('citizen')->user()->lname }}
+            </h6>
+            <span class="u-file-icon u-icon u-icon-1"><img src="{{ asset('images/108153.png') }}" alt=""></span>
             <p class="u-text u-text-2">&nbsp;&nbsp;<span style="font-size: 1.25rem;"> &nbsp; &nbsp; &nbsp;&nbsp;<span
                         style="font-size: 1.5rem;">Basic Infromation:</span>
                 </span>
@@ -46,7 +47,7 @@
                 {{ auth('citizen')->user()->lname }}</p>
             <p class="u-text u-text-4">
                 @if (!count($home))
-                    Complete Your Profile
+                    Complete Your Home Info.
                 @else
                     {{ $home[0]->rname }} St. B In: {{ $home[0]->bid }}, H In : {{ $home[0]->home_id }}.
                 @endif
@@ -70,7 +71,7 @@
                 @if (is_null(auth('citizen')->user()->phone))
                     Has no Phone
                 @else
-                    +120-{{ auth('citizen')->user()->phone }}
+                    +012-{{ auth('citizen')->user()->phone }}
                 @endif
             </p>
             <p class="u-text u-text-9">
@@ -84,12 +85,12 @@
                 @if (count($job))
                     {{ $job[0]->jtype }}
                 @elseif ($emp == 1)
-                    Employee in SmartCity
+                    Work in SmartCity
                 @else
                     Has No Job find one <a href="{{ Route('citizen.job') }}">Here</a>
                 @endif
             </p><span class="u-file-icon u-icon u-icon-9"><img src="{{ asset('images/783886.png') }}" alt=""></span>
-            <a href="{{ Route('citizen.changePassword') }}" data-page-id="83396233"
+            <a href="{{ Route('citizen.changePassword') }}" data-page-id="83396233" style="margin-left: 215px"
                 class="u-active-none u-border-2 u-border-palette-1-base u-bottom-left-radius-0 u-bottom-right-radius-0 u-btn u-btn-rectangle u-button-style u-hover-none u-none u-radius-0 u-top-left-radius-0 u-top-right-radius-0 u-btn-1">Change
                 Password</a>
             <span class="u-file-icon u-icon u-icon-10">

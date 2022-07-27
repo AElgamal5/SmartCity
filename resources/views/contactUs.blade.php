@@ -22,25 +22,27 @@
                         inquiries or complaints please contact us:<br>
                         <br>
                     </p>
-                    <a href="https://nicepage.com/c/fashion-beauty-website-templates"
+                    <a href="mailto:CustomerService@gmail.com"
                         class="u-border-1 u-border-active-palette-2-base u-border-hover-palette-1-base u-btn u-button-style u-none u-text-custom-color-1 u-btn-2">Customer
-                        Service@gmail.com</a><span class="u-file-icon u-icon u-icon-1"><img src="images/646094.png"
-                            alt=""></span><span class="u-file-icon u-icon u-icon-2"><img src="images/159832.png"
-                            alt=""></span>
-                    <p class="u-text u-text-3"> Call 0123456789</p>
+                        Service</a>
+                    <span class="u-file-icon u-icon u-icon-1"><img src="{{ asset('images/646094.png') }}" alt=""></span>
+                    <span class="u-file-icon u-icon u-icon-2"><img src="{{ asset('images/159832.png') }}" alt=""></span>
+                    <p class="u-text u-text-3"> <a href="tel:+0123-456-7890" style="color: #ec1919">123-456-7890</a></p>
                     <a href="{{ Route('home') }}" data-page-id="92889271"
-                        class="u-border-1 u-border-active-palette-2-base u-border-hover-palette-1-base u-btn u-button-style u-none u-text-custom-color-1 u-btn-3">Home Page</a><span
-                        class="u-file-icon u-icon u-icon-3"><img src="images/1946488.png" alt=""></span>
+                        class="u-border-1 u-border-active-palette-2-base u-border-hover-palette-1-base u-btn u-button-style u-none u-text-custom-color-1 u-btn-3">Home
+                        Page</a><span class="u-file-icon u-icon u-icon-3"><img src="{{ asset('images/1946488.png') }}"
+                            alt=""></span>
                 </div>
             </div>
             <h5 class="u-text u-text-default-lg u-text-default-md u-text-default-sm u-text-default-xl u-text-4">Our Contact
                 Channels<br>
             </h5>
-            <a href="https://gmail.com"
+            {{-- <a href="https://gmail.com"
                 class="u-border-1 u-border-active-palette-2-base u-border-hover-palette-1-base u-btn u-button-style u-none u-text-custom-color-1 u-btn-4">
-                Email Us</a>
+                Email Us</a> --}}
+            <a href="mailto:feadback@sc.com" style="color: #ec1919">Send Feedback</a>
         </div>
     </section>
     <br><br>
-    
+
 @endsection

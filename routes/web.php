@@ -2,26 +2,16 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\PaymentController;
 
 use App\Http\Controllers\Auth\Citizen\CitizenLoginController;
 use App\Http\Controllers\Auth\Citizen\CitizenController;
+use App\Http\Controllers\PaymentController;
 
 use App\Http\Controllers\Auth\Employee\EmployeeLoginController;
 use App\Http\Controllers\Auth\Employee\EmployeeController;
 
 use App\Http\Controllers\Auth\Admin\AdminLoginController;
 use App\Http\Controllers\Auth\Admin\AdminController;
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
 //-----------------------------------------------------------------------------------//
 //---------------------------------------Home----------------------------------------//
@@ -50,7 +40,7 @@ Route::get('/citizen/changePassword', [CitizenController::class, 'showChangePass
 Route::post('/citizen/changePassword', [CitizenController::class, 'changePassword'])->name('citizen.changePassword.save');
 Route::get('/citizen/changePhoto', [CitizenController::class, 'showChangePhoto'])->name('citizen.changePhoto');
 Route::post('/citizen/changePhoto', [CitizenController::class, 'changePhoto'])->name('citizen.changePhoto.save');
-
+Route::post('/citizen/dashboard', [CitizenController::class, 'citizenRequest'])->name('citizen.request');
 
 Route::get('/citizen/apartment', [CitizenController::class, 'apartment'])->name('citizen.apartment');
 /* Route::get('/citizen/apartment/payment', [CitizenController::class, 'payment'])->name('citizen.apartment.payment');*/
@@ -67,9 +57,10 @@ Route::post('/citizen/job', [CitizenController::class, 'job'])->name('citizen.jo
 
 Route::get('/citizen/car', [CitizenController::class, 'car'])->name('citizen.car');
 Route::post('/citizen', [CitizenController::class, 'sos'])->name('citizen.sos');
-Route::post('/citizen/dashboard', [CitizenController::class, 'citizenRequest'])->name('citizen.request');
 
-Route::get('/citizen/certficateOfBirth', [CitizenController::class, 'certficateOfBirth'])->name('citizen.certficateOfBirth');
+//---------------------------------E-government-----------------------------------//
+
+Route::post('/citizen/certficateOfBirth', [CitizenController::class, 'certficateOfBirth'])->name('citizen.certficateOfBirth');
 Route::get('/citizen/idCard', [CitizenController::class, 'idCard'])->name('citizen.idCard');
 Route::get('/citizen/drivingLicense', [CitizenController::class, 'drivingLicense'])->name('citizen.drivingLicense');
 Route::get('/citizen/appointmentReservation', [CitizenController::class, 'appointmentReservation'])->name('citizen.appointmentReservation');
@@ -204,7 +195,6 @@ Route::get('/employee/editCar/{car_id}', [EmployeeController::class, 'editCar'])
 Route::post('/employee/editCar/{car_id}', [EmployeeController::class, 'editCarSave'])->name('employee.editCar.save');
 Route::get('/employee/deleteaCar/{car_id}', [EmployeeController::class, 'deleteCar'])->name('employee.deleteCar');
 
-
 Route::get('/employee/companies', [EmployeeController::class, 'companies'])->name('employee.companies');
 Route::get('/employee/addCompany', [EmployeeController::class, 'addCompany'])->name('employee.addCompany');
 Route::post('/employee/addCompany', [EmployeeController::class, 'addCompanySave'])->name('employee.addCompany.save');
@@ -215,9 +205,9 @@ Route::get('/employee/deleteCompany/{company_id}', [EmployeeController::class, '
 Route::get('/employee/iots', [EmployeeController::class, 'iots'])->name('employee.iots');
 Route::get('/employee/addIot', [EmployeeController::class, 'addIot'])->name('employee.addIot');
 Route::post('/employee/addIot', [EmployeeController::class, 'addIotSave'])->name('employee.addIot.save');
-Route::get('/employee/editIot/{pid}', [EmployeeController::class, 'editIot'])->name('employee.editIot');
-Route::put('/employee/editIotSave/{pid}', [EmployeeController::class, 'editIotSave'])->name('employee.editIot.save');
-Route::get('/employee/deleteIot/{pid}', [EmployeeController::class, 'deleteIot'])->name('employee.deleteIot');
+Route::get('/employee/editIot/{id}', [EmployeeController::class, 'editIot'])->name('employee.editIot');
+Route::put('/employee/editIotSave/{id}', [EmployeeController::class, 'editIotSave'])->name('employee.editIot.save');
+Route::get('/employee/deleteIot/{id}', [EmployeeController::class, 'deleteIot'])->name('employee.deleteIot');
 
 Route::get('/employee/forgetPasswords', [EmployeeController::class, 'forgetPasswords'])->name('employee.forgetPasswords');
 //Route::get('/employee/forgetPasswords/{id}',[EmployeeController::class,'forgetPasswordsState'])->name('employee.forgetPasswordsState');
@@ -228,6 +218,8 @@ Route::post('/employee/complaints/{id}', [EmployeeController::class, 'complaints
 
 Route::get('/employee/appointments', [EmployeeController::class, 'appointments'])->name('employee.appointments');
 Route::post('/employee/appointments/{id}', [EmployeeController::class, 'appointmentsState'])->name('employee.appointmentsState');
+
+Route::get('/employee/apiUsers', [EmployeeController::class, 'apiUsers'])->name('employee.apiUsers');
 
 //-----------------------------------------------------------------------------------//
 //-------------------------------------Admin-----------------------------------------//

@@ -20,7 +20,8 @@
             </div>
             <h6 class="u-align-center u-text u-text-default u-text-palette-1-base u-text-1">
                 {{ auth('citizen')->user()->fname }} {{ auth('citizen')->user()->minit }}
-                {{ auth('citizen')->user()->lname }}</h6>
+                {{ auth('citizen')->user()->lname }}
+            </h6>
             <div alt="" class="u-border-9 u-border-white u-image u-image-circle u-image-2" data-image-width="1280"
                 data-image-height="1280"></div>
             <h3 class="u-text u-text-2">E-Government</h3>
@@ -86,7 +87,6 @@
                                                 class="u-border-none u-btn u-btn-round u-btn-submit u-button-style u-custom-color-1 u-radius-20 u-btn-3"
                                                 style="margin: 10px 70px">VIEW</a>
 
-
                                         </div>
                                         <div alt="" class="u-border-9 u-border-white u-image u-image-circle u-image-7"
                                             data-image-width="1280" data-image-height="1217"></div>
@@ -108,7 +108,7 @@
                                         <h3 class="u-align-center u-text u-text-default u-text-7">View Owned Cars</h3>
                                         <div alt="" class="u-border-9 u-border-white u-image u-image-circle u-image-9"
                                             data-image-width="1280" data-image-height="1280"></div>
-                                        <h3 class="u-text u-text-default u-text-8">View Discendant</h3>
+                                        <h3 class="u-text u-text-default u-text-8">View Descendant</h3>
                                         <h6 class="u-align-center u-text u-text-black u-text-default u-text-9">View
                                             Available<br>Jobs
                                         </h6>

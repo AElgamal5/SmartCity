@@ -30,7 +30,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="u-form u-form-1">
                 <form action="{{ Route('citizen.changePassword.save') }}" method="POST"
                     class="u-clearfix u-form-spacing-10 u-inner-form" style="padding: 10px;">

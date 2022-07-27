@@ -25,7 +25,7 @@ class AdminController extends Controller
     public function index()
     {
         $admin = DB::select(
-            'select fname, lname, avatar from citizens where id=?',
+            'select fname, lname, avatar from citizens where id= ?',
             [Auth('admin')->user()->citizen_id]
         );
         return view('auth.admin.mainpanel', ['admin' => $admin]);

@@ -18,6 +18,7 @@
                             <th class="u-border-1 u-border-grey-dark-1 u-table-cell"><b>@sortablelink('id', 'SSN')</b></th>
                             <th class="u-border-1 u-border-grey-dark-1 u-table-cell"><b>@sortablelink('cid', 'CSSN')</b></th>
                             <th class="u-border-1 u-border-grey-dark-1 u-table-cell"><b>@sortablelink('ctype', 'Care Type')</b></th>
+                            <th class="u-border-1 u-border-grey-dark-1 u-table-cell"><b>@sortablelink('status', 'Status')</b></th>
                             <th class="u-border-1 u-border-grey-dark-1 u-table-cell">Edit/Delete</th>
                         </tr>
                     </thead>
@@ -29,6 +30,13 @@
                                 <td class="u-border-3 u-border-grey-30 u-table-cell u-table-cell-7">{{ $care->cid }}
                                 </td>
                                 <td class="u-border-3 u-border-grey-30 u-table-cell u-table-cell-7">{{ $care->ctype }}
+                                </td>
+                                <td class="u-border-3 u-border-grey-30 u-table-cell u-table-cell-7">
+                                    @if ($care->status==0)
+                                        Dead
+                                    @else
+                                        Alive
+                                    @endif
                                 </td>
                                 <td class="u-border-3 u-border-grey-30 u-table-cell u-table-cell-12">
                                     <a href="{{ Route('employee.editCitizenCare',[$care->id,$care->cid]) }}">Edit</a>/<a

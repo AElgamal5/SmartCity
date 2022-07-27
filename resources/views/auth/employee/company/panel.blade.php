@@ -19,9 +19,10 @@
                             <th class="u-border-1 u-border-grey-dark-1 u-table-cell">@sortablelink('field', 'Field')</th>
                             <th class="u-border-1 u-border-grey-dark-1 u-table-cell">@sortablelink('Capital', 'Capital')</th>
                             <th class="u-border-1 u-border-grey-dark-1 u-table-cell">@sortablelink('Bid', 'Building No.')</th>
+                            <th class="u-border-1 u-border-grey-dark-1 u-table-cell">@sortablelink('status', 'Status')</th>
                             <th class="u-border-1 u-border-grey-dark-1 u-table-cell">@sortablelink('created_at', 'Created At')</th>
                             <th class="u-border-1 u-border-grey-dark-1 u-table-cell">@sortablelink('updated_at', 'Updated At')</th>
-                            <th class="u-border-1 u-border-grey-dark-1 u-table-cell">Edit/Delete</th>
+                            <th class="u-border-1 u-border-grey-dark-1 u-table-cell">Edit</th>
                         </tr>
                     </thead>
                     <tbody class="u-custom-color-1 u-table-body u-table-body-1">
@@ -38,12 +39,19 @@
                                 <td class="u-border-3 u-border-grey-30 u-table-cell u-table-cell-7"> {{ $com->Bid }}
                                 </td>
                                 <td class="u-border-3 u-border-grey-30 u-table-cell u-table-cell-7">
+                                    @if ($com->status == 1)
+                                        Active
+                                    @else
+                                        Idle
+                                    @endif
+                                </td>
+                                <td class="u-border-3 u-border-grey-30 u-table-cell u-table-cell-7">
                                     {{ $com->created_at }}</td>
                                 <td class="u-border-3 u-border-grey-30 u-table-cell u-table-cell-7">
                                     {{ $com->updated_at }}</td>
                                 <td class="u-border-3 u-border-grey-30 u-table-cell u-table-cell-12">
-                                    <a href="{{ Route('employee.editCompany', $com->company_id) }}">Edit</a>/<a
-                                        href="{{ Route('employee.deleteCompany', $com->company_id) }}">Delete</a>
+                                    <a href="{{ Route('employee.editCompany', $com->company_id) }}">Edit</a>{{-- /<a
+                                        href="{{ Route('employee.deleteCompany', $com->company_id) }}">Delete</a> --}}
                                 </td>
                             </tr>
                         @endforeach

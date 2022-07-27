@@ -33,7 +33,7 @@
                             <th class="u-border-1 u-border-grey-dark-1 u-table-cell">@sortablelink('sstatus', 'Social Status')</th>
                             <th class="u-border-1 u-border-grey-dark-1 u-table-cell">@sortablelink('hid', 'Home No.')</th>
                             <th class="u-border-1 u-border-grey-dark-1 u-table-cell">@sortablelink('status', 'State')</th>
-                            <th class="u-border-1 u-border-grey-dark-1 u-table-cell">Edit/Delete</th>
+                            <th class="u-border-1 u-border-grey-dark-1 u-table-cell">Edit</th>
                         </tr>
                     </thead>
                     <tbody class="u-custom-color-1 u-table-body u-table-body-1">
@@ -61,9 +61,14 @@
                                     @endif
                                 </td>
                                 <td class="u-border-3 u-border-grey-30 u-table-cell u-table-cell-7">{{ $citizen->hid }}</td>
-                                <td class="u-border-3 u-border-grey-30 u-table-cell u-table-cell-7">{{ $citizen->status }}</td>
+                                <td class="u-border-3 u-border-grey-30 u-table-cell u-table-cell-7">
+                                @if ($citizen->status == 0)
+                                    DEAD
+                                @else
+                                    Alive
+                                @endif</td>
                                 <td class="u-border-3 u-border-grey-30 u-table-cell u-table-cell-12">
-                                    <a href="{{ Route('employee.editCitizen',$citizen->id) }}">Edit</a>/<a href="{{ Route('employee.deleteCitizen',$citizen->id) }}">Delete</a>
+                                    <a href="{{ Route('employee.editCitizen',$citizen->id) }}">Edit</a>{{-- /<a href="{{ Route('employee.deleteCitizen',$citizen->id) }}">Delete</a> --}}
                                 </td>
                             </tr>
                         @endforeach

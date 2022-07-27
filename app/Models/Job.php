@@ -19,6 +19,6 @@ class Job extends Model
         'salary', 'jtype', 'work_place_id', 'confirm',
     ];
     protected $sortable = [
-        'jid', 'salary', 'jtype', 'work_place_id', 'created_at', 'updated_at', 'confirm'
+        'jid', 'salary', 'jtype', 'work_place_id', 'created_at', 'updated_at', 'confirm','status'
     ];
 }

@@ -34,6 +34,7 @@ use App\Models\WaterHis;
 use App\Models\Compliment;
 use App\Models\ElectricityHis;
 use App\Models\Sos;
+use App\Models\User;
 use Kyslik\ColumnSortable\Sortable;
 
 
@@ -155,32 +156,33 @@ class EmployeeController extends Controller
         return redirect()->route('employee.editCitizens')->withSuccess('You have added a citizen successfuly');
     }
 
-    public function deleteCitizen($id)
+    /* public function deleteCitizen($id)
     {
-        /* if ($id != Auth::guard('employee')->user()->citizen_id) {
+        if ($id != Auth::guard('employee')->user()->citizen_id) {
             DB::delete('delete from citizens where id = ?', [$id]);
             return redirect()->back()->withSuccess('You have deleted citizen successfuly');
         } else {
             return redirect()->back()->withErrors('You can\'t delete your citizen account');
-        } */
-        $emp = DB::select('SELECT citizen_id from employee where citizen_id = ?', [$id]);
-        /* dd($emp); */
-        if (!empty($emp)) {
-            return redirect()->back()->withErrors('You can\'t delete your This account');
         }
-        $citizen = Citizen::find($id);
-        $citizen->status = 0;
-        $citizen->save();
+        $emp = DB::select('SELECT citizen_id from employee where citizen_id = ?', [$id]);
+        if (!empty($emp)) {
+            return redirect()->back()->withErrors('You can\'t delete This account');
+        }
+        $admin = DB::select('SELECT citizen_id from admin where citizen_id = ?', [$id]);
+        if (!empty($admin)) {
+            return redirect()->back()->withErrors('You can\'t delete This account');
+        }
+        DB::statement('exec delete_citizen @id =?',[$id]);
         return redirect()->back()->withSuccess('You have deleted citizen successfuly');
-    }
+    } */
 
     public function editCitizen($id)
-    {   
-        $emp = DB::select('SELECT citizen_id from employee where citizen_id = ?', [$id]);
+    {
         /* dd($emp); */
+        /* $emp = DB::select('SELECT citizen_id from employee where citizen_id = ?', [$id]);
         if (!empty($emp)) {
-            return redirect()->back()->withErrors('You can\'t delete your This account');
-        }
+            return redirect()->back()->withErrors('You can\'t edit your This account');
+        } */
         $citizen = DB::select('select * from citizens where id=?', [$id]);
         return view('auth.employee.citizen&care.editCitizen', ['citizen' => $citizen]);
     }
@@ -202,6 +204,8 @@ class EmployeeController extends Controller
             'status' => 'required|integer|in:0,1'
         ]);
         /* dd($request); */
+        $admin = DB::select('SELECT citizen_id from admin where citizen_id = ?', [$id]);
+
         $citizen = Citizen::find($id);
         if ($request->password) {
             $citizen->password = Hash::make($request->password);
@@ -215,7 +219,9 @@ class EmployeeController extends Controller
         $citizen->sstatus = $request->sstatus;
         $citizen->hid = $request->hid;
         $citizen->phone = $request->phone;
-        $citizen->status = $request->status;
+        if (empty($admin)) {
+            DB::statement('exec delete_citizen @id =?',[$id]);
+        }
         $citizen->save();
         // DB::update('update citizens 
         // set email=?, fname= ?, minit=?, lname=?, bdate=?, sex=?, sstatus=?, 
@@ -286,7 +292,7 @@ class EmployeeController extends Controller
 
     public function editCitizenCare($id, $cid)
     {
-        $ctype = DB::select('SELECT ctype FROM care WHERE id = ? AND cid = ?', [$id, $cid]);
+        $ctype = DB::select('SELECT ctype, status FROM care WHERE id = ? AND cid = ?', [$id, $cid]);
         return view('auth.employee.citizen&care.editCitizenCare', ['id' => $id, 'cid' => $cid, 'ctype' => $ctype]);
     }
 
@@ -296,8 +302,9 @@ class EmployeeController extends Controller
             'id' => 'required|integer|exists:citizens,id|min:1|max:2147483647',
             'cid' => 'required|integer|exists:citizens,id|different:ssn|min:1|max:2147483647',
             'ctype' => 'required|string|in:father,mother,partner|max:30',
+            'status' => 'required|integer|in:0,1'
         ]);
-        DB::update('UPDATE care SET id = ?, cid = ?, ctype = ? WHERE id = ? AND cid = ?', [$request->id, $request->cid, $request->ctype, $id, $cid]);
+        DB::update('UPDATE care SET id = ?, cid = ?, ctype = ?, status=? WHERE id = ? AND cid = ?', [$request->id, $request->cid, $request->ctype,$request->status, $id, $cid]);
         return redirect()->route('employee.citizenCare')->withSuccess('You have edited the care relation successfuly');
     }
 
@@ -641,16 +648,21 @@ class EmployeeController extends Controller
             'lid' => 'required|integer|exists:Lands,land_id|min:1|max:2147483647',
             'sb_type' => 'required|string|max:60',
             'area' => 'required|integer|min:1|max:2147483647',
+            'status' => 'required|in:0,1'
         ]);
         DB::update('UPDATE Buildings SET no_flats=?, no_floors=?, lid=?, sb_type=?, area=? WHERE building_id=? ', [$request->no_flats, $request->no_floors, $request->lid, $request->sb_type,  $request->area, $building_id]);
+        if($request->status == 0){
+            DB::statement('exec delete_building @id =?',[$building_id]);
+        }
         return redirect()->route('employee.buildings')->withSuccess('You have Edited the home successfuly');
     }
 
-    public function deleteBuilding($building_id)
+    /* public function deleteBuilding($building_id)
     {
-        DB::delete('DELETE FROM Buildings WHERE building_id=?', [$building_id]);
+        // DB::delete('DELETE FROM Buildings WHERE building_id=?', [$building_id]);
+        DB::statement('exec delete_building @id =?',[$building_id]);
         return redirect()->back()->withSuccess('You have Deleted the building successfuly');
-    }
+    } */
 
     public function addHome()
     {
@@ -693,16 +705,21 @@ class EmployeeController extends Controller
             'floor_no' => 'required|integer|min:1|max:2147483647',
             'rooms_no' => 'required|integer|min:1|max:2147483647',
             'home_rent' => 'required|numeric|max:922337203685477.5807|min:1',
+            'status' => 'required|in:0,1'
         ]);
         DB::update('UPDATE Homes SET bid=?, area=?, floor_no=?, rooms_no=?, home_rent=? WHERE home_id=? ', [$request->bid, $request->area, $request->floor_no, $request->rooms_no, $request->home_rent, $home_id]);
+        if($request->status == 0){
+            DB::statement('exec delete_home @id =?',[$home_id]);
+        }
         return redirect()->route('employee.buildings')->withSuccess('You have Edited the home successfuly');
     }
 
-    public function deleteHome($home_id)
+    /* public function deleteHome($home_id)
     {
-        DB::delete('DELETE FROM Homes WHERE home_id=?', [$home_id]);
+        //DB::delete('DELETE FROM Homes WHERE home_id=?', [$home_id]);
+        DB::statement('exec delete_home @id =?',[$home_id]);
         return redirect()->back()->withSuccess('You have Deleted the home successfuly');
-    }
+    } */
 
     public function water()
     {
@@ -902,20 +919,25 @@ class EmployeeController extends Controller
             'salary' => 'required|numeric|max:922337203685477.5807|min:1',
             'jtype' => 'required|string|max:50',
             'work_place_id' => 'required|integer|min:1|max:2147483647',
-            'confirm' => 'required|integer|in:0,1'
+            'confirm' => 'required|integer|in:0,1',
+            'status' => 'required|integer|in:0,1'
         ]);
         DB::update(
             'UPDATE jobs SET salary=?, jtype=?, work_place_id=?, confirm=?, updated_at=? WHERE jid=? ',
             [$request->salary, $request->jtype, $request->work_place_id, $request->confirm, now(), $jid]
         );
+        if($request->status == 0){
+            DB::statement('exec delete_job @id =?',[$jid]);
+        }
         return redirect()->route('employee.jobs')->withSuccess('You have edit the job successfuly');
     }
 
-    public function deletejob($jid)
+    /* public function deletejob($jid)
     {
         DB::delete('DELETE FROM jobs WHERE jid=?', [$jid]);
+        DB::statement('exec delete_job @id =?',[$jid]);
         return redirect()->back()->withSuccess('You have Deleted the job successfuly');
-    }
+    } */
 
     public function addAJob()
     {
@@ -928,9 +950,12 @@ class EmployeeController extends Controller
             'citizen_id' => 'required|integer|exists:citizens,id|min:1|max:2147483647',
             'jid' => 'required|integer|exists:jobs,jid|min:1|max:2147483647',
         ]);
-        $state = DB::select('SELECT confirm from jobs where jid=?', [$request->jid]);
+        $state = DB::select('SELECT confirm,status from jobs where jid=?', [$request->jid]);
         if ($state[0]->confirm == 0) {
             return redirect()->back()->withInput()->withErrors('Can Not Assign Unconfirmed Job');
+        }
+        if ($state[0]->status == 0) {
+            return redirect()->back()->withInput()->withErrors('Can Not Assign Idle Job');
         }
         AsJob::create([
             'citizen_id' => $request->citizen_id,
@@ -950,20 +975,21 @@ class EmployeeController extends Controller
         $this->validate($request, [
             'citizen_id' => 'required|integer|exists:citizens,id|min:1|max:2147483647',
             'jid' => 'required|integer|exists:jobs,jid|min:1|max:2147483647',
+            'status' => 'required|integer|in:0,1'
         ]);
         $state = DB::select('SELECT confirm from jobs where jid=?', [$request->jid]);
         if ($state[0]->confirm == 0) {
             return redirect()->back()->withInput()->withErrors('Can Not Assign Unconfirmed Job');
         }
-        DB::update('UPDATE asjobs SET citizen_id=?, jid=? WHERE id=? ', [$request->citizen_id, $request->jid, $id]);
+        DB::update('UPDATE asjobs SET citizen_id=?, jid=?, status=? WHERE id=? ', [$request->citizen_id, $request->jid,$request->status, $id]);
         return redirect()->route('employee.jobs')->withSuccess('You have edit the Assign successfuly');
     }
 
-    public function deleteajob($id)
+    /* public function deleteajob($id)
     {
         DB::delete('DELETE FROM asjobs WHERE id=?', [$id]);
         return redirect()->back()->withSuccess('You have Deleted the ass successfuly');
-    }
+    } */
 
     public function cars()
     {
@@ -1090,18 +1116,23 @@ class EmployeeController extends Controller
             'field' => 'required|string|max:60',
             'Capital' => 'required|numeric|max:922337203685477.5807|min:1',
             'Bid' => 'required|integer|exists:Buildings,building_id|min:1|max:2147483647',
+            'status' =>'required|integer|in:0,1'
         ]);
         /* dd('1'); */
         DB::update('UPDATE Companies SET cname=?, field=?, Capital=?, Bid=? WHERE company_id=? ', [$request->cname, $request->field, $request->Capital, $request->Bid, $company_id]);
         //dd('2');
+        if($request->status == 0){
+            DB::statement('exec delete_company @id = ?',[$company_id]);
+        }
         return redirect()->route('employee.companies')->withSuccess('You have edit the Company successfuly');
     }
 
-    public function deleteCompany($company_id)
+    /* public function deleteCompany($company_id)
     {
-        DB::delete('DELETE FROM Companies WHERE company_id=?', [$company_id]);
+        //DB::delete('DELETE FROM Companies WHERE company_id=?', [$company_id]);
+        DB::statement('exec delete_company @id = ?',[$company_id]);
         return redirect()->back()->withSuccess('You have Deleted the company successfuly');
-    }
+    } */
 
     public function iots()
     {
@@ -1131,13 +1162,13 @@ class EmployeeController extends Controller
         return redirect()->route('employee.iots')->withSuccess('You have added an IOT successfuly');
     }
 
-    public function editIot($pid)
+    public function editIot($id)
     {
-        $iot = DB::select('SELECT * FROM iots WHERE pid=?', [$pid]);
+        $iot = DB::select('SELECT * FROM iots WHERE id=?', [$id]);
         return view('auth.employee.iot.edit', ['iot' => $iot]);
     }
 
-    public function editIotSave(Request $request, $pid)
+    public function editIotSave(Request $request, $id)
     {
         //dd($request);
         $this->validate($request, [
@@ -1147,14 +1178,14 @@ class EmployeeController extends Controller
             'bid' => 'required|integer|exists:Buildings,building_id|min:1',
         ]);
         /* dd('1'); */
-        DB::update('UPDATE iots SET pname=?, state=?, hid=?, bid=? WHERE pid=? ', [$request->pname, $request->state, $request->hid, $request->bid, $pid]);
+        DB::update('UPDATE iots SET pname=?, state=?, hid=?, bid=? WHERE id=? ', [$request->pname, $request->state, $request->hid, $request->bid, $id]);
         //dd('2');
         return redirect()->route('employee.iots')->withSuccess('You have edited the IOT successfuly');
     }
 
-    public function deleteIot($pid)
+    public function deleteIot($id)
     {
-        DB::delete('DELETE FROM iots WHERE pid=?', [$pid]);
+        DB::delete('DELETE FROM iots WHERE id=?', [$id]);
         return redirect()->back()->withSuccess('You have Deleted the IOT successfuly');
     }
 
@@ -1192,5 +1223,10 @@ class EmployeeController extends Controller
     {
         DB::update('UPDATE appointments SET state = 1 WHERE id=?', [$id]);
         return redirect()->back()->withSuccess('You have Edited appointment successfuly');
+    }
+
+    public function apiUsers(){
+        $users = User::all();
+        dd($users);
     }
 }

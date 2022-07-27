@@ -50,12 +50,12 @@ class CitizenLoginController extends Controller
       if ($age < 16) {
         return redirect()->route('citizen.login')->with('warning', 'Your Age Less Than 16 Years Old.');
       }
-      
-
     }
     if (Auth::guard('citizen')->attempt(['id' => $request->id, 'password' => $request->password])) {
       return redirect()->intended(route('citizen'));
     }
-    return redirect()->back()->with("error", "Wrong input data")->withInput($request->only('id', 'remember'));
+    /* return redirect()->back()->with("error", "Wrong input data")->withInput($request->only('id', 'remember')); */
+    return redirect()->route('citizen.login')->with("error", "Wrong input data")->withInput($request->only('id'));
+
   }
 }

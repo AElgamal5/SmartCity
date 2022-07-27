@@ -19,7 +19,7 @@ class LoginController extends Controller
         $fields = $request->validate([
             'name' => 'required|string',
             'email' => 'required|string|unique:users,email',
-            'password' => 'required|string|confirmed'
+            'password' => 'required|string|confirmed|min:0'
 
         ]);
         //confirmed -> use to make user enter the password 2 times (password,password_confirmation)

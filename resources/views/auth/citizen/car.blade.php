@@ -43,8 +43,9 @@
                 <p class="u-text u-text-16">{{ $car[0]->tt }}</p>
             </div>
         @else
-            <div style="height: 52.5vh">
-                <br><br>
+            <div style="height: 44.3vh">
+                <a href="{{ Route('citizen') }}" data-page-id="92889271" style="margin:4% 10%"
+                    class="u-active-none u-border-2 u-border-custom-color-1 u-bottom-left-radius-0 u-bottom-right-radius-0 u-btn u-btn-rectangle u-button-style u-hover-none u-none u-radius-0 u-text-custom-color-1 u-top-left-radius-0 u-top-right-radius-0 u-btn-1">Back&nbsp;</a>
                 <h2 style="margin-left: 10% ">You Don't have A Car</h2>
             </div>
         @endif

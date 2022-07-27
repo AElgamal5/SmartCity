@@ -19,6 +19,6 @@ class Iot extends Model
         'pname', 'state', 'hid', 'bid',
     ];
     protected $sortable = [
-        'pid', 'pname', 'state', 'hid', 'bid','created_at', 'updated_at'
+        'id', 'pname', 'state', 'hid', 'bid','created_at', 'updated_at'
     ];
 }
