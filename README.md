@@ -1,4 +1,4 @@
-<p align="center" font-size=30px>Smart City</p>
+<p align="center" font-size=60px>Smart City</p>
 
 <p align="center">
 <a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
