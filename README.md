@@ -1,8 +1,11 @@
 # Smart City
 
-## About Laravel
+Smart-city is the provision of public services to citizens and other people in a country or region using technological communications devices such as computers and the Internet. Smart-city opens up new possibilities for citizens to have more direct and convenient access to government, as well as for the government to provide services directly to citizens.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Performing functions and collecting data about the city. 
+
+Providing the relation between these systems and the people who live in the city, giving citizens to keep in touch with their properties from the car, the home, and their children.
+
 
 - [Simple, fast routing engine](https://laravel.com/docs/routing).
 - [Powerful dependency injection container](https://laravel.com/docs/container).
